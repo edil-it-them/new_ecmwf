@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { T } from '@threlte/core';
-
 	import {
 		OrbitControls,
 	} from '@threlte/extras';
 	import VideoPlane from './VideoPlane.svelte';
+	
 </script>
 
 <T.PerspectiveCamera makeDefault position={[250, 0, 0]} fov={30} far={10000}>
