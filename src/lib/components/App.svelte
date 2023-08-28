@@ -33,7 +33,7 @@
 		if ($video.paused) {
 			$video.play();
 			$videoBorders.play();
-			twOp.set(0.35, { duration: 20000 }).then(() => twOp.set(1, { duration: 20000 }));
+			// twOp.set(0.35, { duration: 20000 }).then(() => twOp.set(1, { duration: 20000 }));
 		} else {
 			$video.pause();
 			$videoBorders.pause();
