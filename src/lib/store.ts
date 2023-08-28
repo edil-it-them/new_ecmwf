@@ -9,6 +9,8 @@ export const opacity = writable(1);
 export const videoTime = writable(0);
 export let selectedCity = writable([])
 export let recording = readable(false)
+export let videoLoaded=writable(false);
+export let videoBLoaded=writable(false);
 
 function debounce(func: { (): void; apply?: any; }, delay: number | undefined) {
 	let timeoutId: number | undefined;

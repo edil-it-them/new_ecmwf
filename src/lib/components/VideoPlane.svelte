@@ -1,12 +1,6 @@
 <script lang="ts">
 	import { T } from '@threlte/core';
-	import {
-		BufferGeometry,
-		VideoTexture,
-		BufferAttribute,
-		LinearFilter,
-		FrontSide
-	} from 'three';
+	import { BufferGeometry, VideoTexture, BufferAttribute, LinearFilter, FrontSide } from 'three';
 	import { video, videoBorders, showWaves, opacity } from '$lib/store';
 	// import {useTe}
 	// const video = useTexture('743.png');
@@ -15,8 +9,8 @@
 	const videoTexBorders = new VideoTexture($videoBorders);
 	videoTex.minFilter = LinearFilter;
 	let geometry = new BufferGeometry();
-	let width = $video.videoWidth /2;
-	let height = $video.videoHeight /2;
+	let width = $video.videoWidth / 2;
+	let height = $video.videoHeight / 2;
 	let nearClipping = 500;
 	let farClipping = 2000;
 	let vertices = new Float32Array(width * height * 3);
@@ -110,14 +104,12 @@
 </script>
 
 {#if videoTex.isVideoTexture}
-	<T.Mesh
-		scale={48}
-	>
+	<T.Mesh scale={48}>
 		<T.SphereGeometry />
-		<T.MeshBasicMaterial map={videoTexBorders} transparent={true} opacity={$opacity}/>
+		<T.MeshBasicMaterial map={videoTexBorders} transparent={true} opacity={$opacity} />
 	</T.Mesh>
-{/if}
-<!-- {#if $showWaves} -->
+
+	<!-- {#if $showWaves} -->
 	<T.Points rotation={[Math.PI, Math.PI, 0]} scale={0.1}>
 		<T.BufferGeometry attributes={{ position: new BufferAttribute(vertices, 3) }} />
 		<T.ShaderMaterial
@@ -138,6 +130,6 @@
 			depthWrite={true}
 			transparent={false}
 			side={FrontSide}
-			
 		/>
 	</T.Points>
+{/if}

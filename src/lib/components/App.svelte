@@ -2,7 +2,7 @@
 	import { Canvas } from '@threlte/core';
 	import Scene from './Scene.svelte';
 	import Calendar from '$lib/components/Calendar.svelte';
-	import { showWaves, video, videoBorders, opacity, videoTime, recording } from '$lib/store';
+	import { showWaves, video, videoBorders, opacity, videoTime, recording, videoBLoaded, videoLoaded } from '$lib/store';
 	import TimeLine from './TimeLine.svelte';
 	import { tweened } from 'svelte/motion';
 	import { useProgress } from '@threlte/extras';
@@ -16,10 +16,17 @@
 		duration: 800
 	})
 	$: tweenedProgress.set($progress)
+	const handleVideoBordersLoaded = () =>{
+		$videoBLoaded=true;
+	}
+	const handleVideoLoaded = () =>{
+		$videoLoaded=true;
+	}
 </script>
 
 <video
 	bind:currentTime={$videoTime}
+	on:loadeddata={handleVideoLoaded}
 	style="display:none"
 	loop
 	bind:this={$video}
@@ -28,6 +35,7 @@
 <!-- svelte-ignore a11y-media-has-caption -->
 <video
 	currentTime={$videoTime}
+	on:loadeddata={handleVideoBordersLoaded}
 	style="display:none"
 	bind:this={$videoBorders}
 	src="hourly_borders.mp4"
