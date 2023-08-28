@@ -99,8 +99,8 @@
 		step="0.01"
 		bind:value={$opacity}
 	/>
-<!-- </div>
-{#if $tweenedProgress < 1}
+</div>
+<!-- {#if $tweenedProgress < 1}
 	<div
 		transition:fade|local={{
 			duration: 200
