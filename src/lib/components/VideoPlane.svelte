@@ -1,19 +1,10 @@
 <script lang="ts">
 	import { T } from '@threlte/core';
-	import { interactivity, useTexture } from '@threlte/extras';
 	import {
-		AdditiveBlending,
 		BufferGeometry,
-		Mesh,
-		MeshBasicMaterial,
-		NearestFilter,
-		PlaneGeometry,
-		ShaderMaterial,
-		Texture,
 		VideoTexture,
 		BufferAttribute,
 		LinearFilter,
-		BackSide,
 		FrontSide
 	} from 'three';
 	import { video, videoBorders, showWaves, opacity } from '$lib/store';
@@ -105,27 +96,6 @@
 				}
             `;
 
-	// 			void main() {
-
-	// vUv = vec2( position.x / width, position.y / height );
-
-	// vec4 color = texture2D( map, vUv );
-	// float depth = ( color.g + color.b ) / 7.0;
-
-	// // Projection code by @kcmic
-
-	// float z = ( 1.0 + depth ) * (farClipping - nearClipping) + nearClipping;
-
-	// vec4 pos = vec4(
-	// 	( position.x / width - 0.5 ) * z * XtoZ,
-	// 	( position.y / height - 0.5 ) * z * YtoZ,
-	// 	- z + zOffset,
-	// 	1.0);
-
-	// gl_PointSize = pointSize;
-	// gl_Position = projectionMatrix * modelViewMatrix * pos;
-
-	// }
 	const fs = `
     uniform sampler2D map;
 
@@ -137,14 +107,9 @@
     gl_FragColor = vec4( color.r, color.g, color.b, 1.0 );
 
     }`;
-
-	// interactivity();
-	// let $showWaves = false;
-	$: console.log('$showwaves', $showWaves);
 </script>
 
 {#if videoTex.isVideoTexture}
-	<!-- content here -->
 	<T.Mesh
 		scale={48}
 	>
@@ -176,4 +141,3 @@
 			
 		/>
 	</T.Points>
-<!-- {/if} -->

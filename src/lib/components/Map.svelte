@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { T } from '@threlte/core';
 	import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
 	import type { Group, Shape } from 'three';
@@ -49,4 +49,4 @@
 	{#each shapes as shape}
 		<MapPart {shape} />
 	{/each}
-</T.Group>
+</T.Group> -->

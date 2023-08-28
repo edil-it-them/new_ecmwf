@@ -1,21 +1,9 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { T } from '@threlte/core';
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 	import { derived } from 'svelte/store';
 	import { Shape } from 'three';
-	// import {
-	// 	day,
-	// 	finished,
-	// 	hoverMouse,
-	// 	hoverRegion,
-	// 	regionDayFires,
-	// 	started,
-	// 	tooltip,
-	// 	viewport,
-	// 	regionFires,
-	// 	scrollPart
-	// } from './store';
 	export let shape: ShapeR;
 	class ShapeR extends Shape {
 		region!: string;
@@ -108,48 +96,4 @@
 		]}
 	/>
 	<T.MeshStandardMaterial />
-	<!-- {#if $started}
-		<InteractiveObject
-			interactive
-			object={ref}
-			on:pointerenter={() => {
-				if ($viewport.width > 400) {
-					$hoverMouse = true;
-					$tooltip.visible = true;
-					$hoverRegion = shape.region;
-				}
-			}}
-			on:pointerleave={() => {
-				// if ($viewport.width > 400) {
-				$hoverMouse = false;
-				$tooltip.visible = false;
-				$hoverRegion = '';
-				// }
-			}}
-			on:pointermove={(e) => {
-				if ($viewport.width > 400) {
-					if ((e.detail.event?.clientX || 0) > $viewport.width / 2) {
-						$tooltip.toRight = true;
-					} else {
-						$tooltip.toRight = false;
-					}
-					$tooltip.x = e.detail.point.x ?? 0;
-					$tooltip.z = e.detail.point.z ?? 0;
-					$tooltip.d = e.detail.distance ?? 0;
-				}
-			}}
-			on:click={(e) => {
-				if ((e.detail.event?.clientX || 0) > $viewport.width / 2) {
-					$tooltip.toRight = true;
-				} else {
-					$tooltip.toRight = false;
-				}
-				$tooltip.visible = true;
-				$hoverRegion = shape.region;
-				$tooltip.x = e.detail.point.x ?? 0;
-				$tooltip.z = e.detail.point.z ?? 0;
-				$tooltip.d = e.detail.distance ?? 0;
-			}}
-		/>
-	{/if} -->
-</T.Mesh>
+</T.Mesh> -->

@@ -1,8 +1,4 @@
 <script lang="ts">
-	import { viewport, videoTime, selectedCity } from '$lib/store';
-
-	import { scaleBand } from 'd3-scale';
-	import Column from './Column.svelte';
 	import AxisX from './AxisX.svelte';
 	import AxisY from './AxisY.svelte';
 	import MultiLine from './MultiLine.svelte';
@@ -11,8 +7,6 @@
 	import SharedTooltip from './SharedTooltip.html.svelte';
 
 	import { scaleOrdinal } from 'd3-scale';
-	import { timeParse, timeFormat } from 'd3-time-format';
-	import { format, precisionFixed } from 'd3-format';
 	import dataAll from '$lib/glob_temperatures.csv';
 
 	const xKey = 'day';
@@ -96,17 +90,3 @@
 	</LayerCake>
 </div>
 
-
-<!-- <svg
-	class="absolute left-0 top-0 transition-all opacity-20  pointer-events-none"
-	style="transform: translateX({annotationPos -
-		annotationW / 2}px); width:{annotationW}px; height:{annotationH}px"
-	fill="none"
-	stroke-linecap="round"
-	stroke-linejoin="round"
-	stroke-width={annotationW}
-	viewBox="0 0 1 100"
-	stroke="currentColor"
->
-	<path d="M1 135V1" />
-</svg> -->

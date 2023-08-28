@@ -28,7 +28,6 @@
 	let latitude = null;
 	let longitude = null;
 	$: {
-		console.log('find new diffs');
 		$selectedCity.map((d) => {
 			d.maxDifference = d.max - d.max_climatology;
 			d.minDifference = d.min - d.min_climatology;
