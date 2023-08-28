@@ -92,7 +92,7 @@
 		bind:value={$opacity}
 	/>
 </div>
-{#if $tweenedProgress < 1}
+<!-- {#if $tweenedProgress < 1}
 	<div
 		transition:fade|local={{
 			duration: 200
@@ -104,7 +104,7 @@
 			<div class="bar" style="width: {$tweenedProgress * 100}%" />
 		</div>
 	</div>
-{/if}
+{/if} -->
 
 <div class="flex w-full h-full">
 	<Calendar bind:showCalendar />

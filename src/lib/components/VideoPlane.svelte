@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { T } from '@threlte/core';
 	import { BufferGeometry, VideoTexture, BufferAttribute, LinearFilter, FrontSide } from 'three';
-	import { video, videoBorders, showWaves, opacity } from '$lib/store';
+	import { video, videoBorders, showWaves, opacity, videoLoaded, videoBLoaded } from '$lib/store';
 	// import {useTe}
 	// const video = useTexture('743.png');
 
@@ -103,7 +103,7 @@
     }`;
 </script>
 
-{#if videoTex.isVideoTexture}
+{#if videoTex.isVideoTexture && $videoLoaded && $videoBLoaded}
 	<T.Mesh scale={48}>
 		<T.SphereGeometry />
 		<T.MeshBasicMaterial map={videoTexBorders} transparent={true} opacity={$opacity} />
