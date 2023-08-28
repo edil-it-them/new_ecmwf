@@ -5,18 +5,18 @@
 	import { showWaves, video, videoBorders, opacity, videoTime, recording, videoBLoaded, videoLoaded } from '$lib/store';
 	import TimeLine from './TimeLine.svelte';
 	import { tweened } from 'svelte/motion';
-	import { useProgress } from '@threlte/extras';
+	// import { useProgress } from '@threlte/extras';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	let showCalendar = false
 	// $:{if ($videoBorders) $videoBorders.currentTime = $videoTime}
 	let twOp = tweened(1);
 	$: $opacity = $twOp;
-	const { progress } = useProgress()
+	// const { progress } = useProgress()
 
-	const tweenedProgress = tweened($progress, {
-		duration: 800
-	})
+	// const tweenedProgress = tweened($progress, {
+	// 	duration: 800
+	// })
 	$: tweenedProgress.set($progress)
 	const handleVideoBordersLoaded = () =>{
 		$videoBLoaded=true;
@@ -99,7 +99,7 @@
 		step="0.01"
 		bind:value={$opacity}
 	/>
-</div>
+<!-- </div>
 {#if $tweenedProgress < 1}
 	<div
 		transition:fade|local={{
@@ -112,7 +112,7 @@
 			<div class="bar" style="width: {$tweenedProgress * 100}%" />
 		</div>
 	</div>
-{/if}
+{/if} -->
 
 <div class="flex w-full h-full">
 	<Calendar bind:showCalendar />
