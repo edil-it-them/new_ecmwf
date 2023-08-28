@@ -6,6 +6,7 @@
 	import TimeLine from './TimeLine.svelte';
 	import { tweened } from 'svelte/motion';
 	import { useProgress } from '@threlte/extras';
+	import { onMount } from 'svelte';
 	let showCalendar = false
 	// $:{if ($videoBorders) $videoBorders.currentTime = $videoTime}
 	let twOp = tweened(1);
@@ -22,6 +23,12 @@
 	const handleVideoLoaded = () =>{
 		$videoLoaded=true;
 	}
+	let showPrompt = true;
+	onMount(() =>{
+		setTimeout(() =>{
+			showPrompt = false
+		}, 5000)
+	})
 </script>
 
 <video
@@ -79,7 +86,7 @@
 		{/if}
 	</svg></button
 >
-
+<p class:hidden={!showPrompt} class="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 z-50 p-4 bg-white rounded">If you dont see 3D waves consider reloading page</p>
 <div class="absolute right-0 flex flex-col text-white z-50 mr-5" class:hidden={$recording}>
 	<label class="justify-end self-end" for="opacityRange">Opacity:</label>
 	<input
