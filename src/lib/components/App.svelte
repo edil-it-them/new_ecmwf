@@ -17,7 +17,7 @@
 	// const tweenedProgress = tweened($progress, {
 	// 	duration: 800
 	// })
-	$: tweenedProgress.set($progress)
+	// $: tweenedProgress.set($progress)
 	const handleVideoBordersLoaded = () =>{
 		$videoBLoaded=true;
 	}
