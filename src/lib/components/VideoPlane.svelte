@@ -15,7 +15,6 @@
 	let farClipping = 2000;
 	let vertices = new Float32Array(width * height * 3);
 	const gridSize = 500; // Adjust the grid size for denser points
-	const numPoints = gridSize * gridSize;
 	const pointSize = 2; // Adjust the point size for denser appearance
 
 	// Create the positions for the points in a denser grid
@@ -33,15 +32,6 @@
 		vertices[i] = j % width;
 		vertices[i + 1] = Math.floor(j / width);
 	}
-	// geometry.setAttribute('position', new BufferAttribute(vertices, 3));
-	$: console.log(
-		$video,
-		videoTex,
-		'loder video',
-		width,
-		height,
-		[...new Set(vertices)].filter((d) => d)
-	);
 
 	const vs = `
 			uniform sampler2D map;
@@ -103,7 +93,7 @@
     }`;
 </script>
 
-{#if videoTex.isVideoTexture && $videoLoaded && $videoBLoaded}
+{#if videoTex.isVideoTexture}
 	<T.Mesh scale={48}>
 		<T.SphereGeometry />
 		<T.MeshBasicMaterial map={videoTexBorders} transparent={true} opacity={$opacity} />
