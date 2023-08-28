@@ -7,6 +7,7 @@
 	import { tweened } from 'svelte/motion';
 	import { useProgress } from '@threlte/extras';
 	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	let showCalendar = false
 	// $:{if ($videoBorders) $videoBorders.currentTime = $videoTime}
 	let twOp = tweened(1);
@@ -86,7 +87,7 @@
 		{/if}
 	</svg></button
 >
-<p class:hidden={!showPrompt} class="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 z-50 p-4 bg-white rounded">If you dont see 3D waves consider reloading page</p>
+<p class:hidden={!showPrompt} class="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 z-50 p-4 bg-white rounded">If you don't see 3D waves reload page</p>
 <div class="absolute right-0 flex flex-col text-white z-50 mr-5" class:hidden={$recording}>
 	<label class="justify-end self-end" for="opacityRange">Opacity:</label>
 	<input
@@ -99,7 +100,7 @@
 		bind:value={$opacity}
 	/>
 </div>
-<!-- {#if $tweenedProgress < 1}
+{#if $tweenedProgress < 1}
 	<div
 		transition:fade|local={{
 			duration: 200
@@ -111,7 +112,7 @@
 			<div class="bar" style="width: {$tweenedProgress * 100}%" />
 		</div>
 	</div>
-{/if} -->
+{/if}
 
 <div class="flex w-full h-full">
 	<Calendar bind:showCalendar />
