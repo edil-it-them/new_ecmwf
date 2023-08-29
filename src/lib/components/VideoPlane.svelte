@@ -93,7 +93,7 @@
     }`;
 </script>
 
-{#if videoTex.isVideoTexture}
+{#if videoTex.isVideoTexture && videoTexBorders.isVideoTexture}
 	<T.Mesh scale={48}>
 		<T.SphereGeometry />
 		<T.MeshBasicMaterial map={videoTexBorders} transparent={true} opacity={$opacity} />

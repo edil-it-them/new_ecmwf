@@ -2,13 +2,23 @@
 	import { Canvas } from '@threlte/core';
 	import Scene from './Scene.svelte';
 	import Calendar from '$lib/components/Calendar.svelte';
-	import { showWaves, video, videoBorders, opacity, videoTime, recording, videoBLoaded, videoLoaded } from '$lib/store';
+	import {
+		showWaves,
+		video,
+		videoBorders,
+		opacity,
+		videoTime,
+		recording,
+		videoBLoaded,
+		videoLoaded,
+		viewport
+	} from '$lib/store';
 	import TimeLine from './TimeLine.svelte';
 	import { tweened } from 'svelte/motion';
 	// import { useProgress } from '@threlte/extras';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	let showCalendar = false
+	let showCalendar = false;
 	// $:{if ($videoBorders) $videoBorders.currentTime = $videoTime}
 	let twOp = tweened(1);
 	$: $opacity = $twOp;
@@ -18,18 +28,23 @@
 	// 	duration: 800
 	// })
 	// $: tweenedProgress.set($progress)
-	const handleVideoBordersLoaded = () =>{
-		$videoBLoaded=true;
-	}
-	const handleVideoLoaded = () =>{
-		$videoLoaded=true;
-	}
+	const handleVideoBordersLoaded = () => {
+		$videoBLoaded = true;
+	};
+	const handleVideoLoaded = () => {
+		$videoLoaded = true;
+	};
 	let showPrompt = true;
-	onMount(() =>{
-		setTimeout(() =>{
-			showPrompt = false
-		}, 5000)
-	})
+	onMount(() => {
+		if (window.innerWidth > 767) {
+			$video.pause();
+			$videoBorders.pause();
+		}
+		setTimeout(() => {
+			showPrompt = false;
+		}, 5000);
+	});
+	// let height: any;
 </script>
 
 <video
@@ -39,6 +54,9 @@
 	loop
 	bind:this={$video}
 	src="hourly.mp4"
+	playsinline
+	autoplay={true}
+	muted
 />
 <!-- svelte-ignore a11y-media-has-caption -->
 <video
@@ -48,6 +66,9 @@
 	bind:this={$videoBorders}
 	src="hourly_borders.mp4"
 	loop
+	playsinline
+	autoplay={true}
+	muted
 />
 
 <button
@@ -87,7 +108,12 @@
 		{/if}
 	</svg></button
 >
-<p class:hidden={!showPrompt} class="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 z-50 p-4 bg-white rounded">If you don't see 3D waves reload page</p>
+<p
+	class:hidden={!showPrompt}
+	class="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 z-50 p-4 bg-white rounded"
+>
+	If you don't see 3D waves reload page
+</p>
 <div class="absolute right-0 flex flex-col text-white z-50 mr-5" class:hidden={$recording}>
 	<label class="justify-end self-end" for="opacityRange">Opacity:</label>
 	<input
@@ -123,6 +149,7 @@
 		<TimeLine />
 	</div>
 </div>
+
 <!-- Timeline -->
 
 <style>
